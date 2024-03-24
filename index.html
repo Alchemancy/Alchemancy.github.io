@@ -15,14 +15,65 @@
     }
     /* CSS for buttons */
     button {
-        background-color: #636363; /* Button background color */
-        color: white; /* Button text color */
+        background-color: #6d5d4d; /* Default button color */
+        color: white;
         border: none;
-        padding: 15px 20px; /* Increase padding for bigger buttons */
-        margin: 5px; /* Add margin between buttons */
-        font-size: 16px; /* Increase font size */
+        padding: 15px 30px;
+        margin: 5px;
         cursor: pointer;
-        border-radius: 5px; /* Add border radius */
+        border-radius: 8px;
+        font-size: 16px;
+    }
+    /* Center the buttons */
+    .button-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+    /* Button colors */
+    .fire {
+        background-color: #FF4500; /* Fire */
+    }
+    .air {
+        background-color: #87CEEB; /* Air */
+    }
+    .electric {
+        background-color: #FFD700; /* Electric */
+    }
+    .wood {
+        background-color: #228B22; /* Wood */
+    }
+    .water {
+        background-color: #1E90FF; /* Water */
+    }
+    .dark {
+        background-color: #2F4F4F; /* Dark */
+    }
+    .metal {
+        background-color: #B0C4DE; /* Metal */
+    }
+    .earth {
+        background-color: #8B4513; /* Earth */
+    }
+    .ice {
+        background-color: #ADD8E6; /* Ice */
+    }
+    .divine {
+        background-color: #FFFFF0; /* Divine */
+    }
+    .plant {
+        background-color: #7CFC00; /* Plant */
+    }
+    .aether {
+        background-color: #DA70D6; /* Aether */
+    }
+    .relic {
+        background-color: #FFD700; /* Relic */
+    }
+    .reflection {
+        background-color: #D3D3D3; /* Reflection */
+    }
+    .life-decay {
+        background-color: #8B0000; /* Life/Decay */
     }
     /* CSS for image grid */
     #image-grid {
@@ -44,15 +95,15 @@
 </style>
 </head>
 <body>
-<h1>Alchemancy</h1> <!-- Header added here -->
-<div>
+<h1 style="text-align: center;">Alchemancy</h1>
+<div class="buttons-container">
     <button onclick="filterImages('Fire')">Fire</button>
     <button onclick="filterImages('Air')">Air</button>
     <button onclick="filterImages('Electric')">Electric</button>
     <button onclick="filterImages('Wood')">Wood</button>
     <button onclick="filterImages('Water')">Water</button>
 </div>
-    <div>
+<div class="buttons-container">
     <button onclick="filterDualImages('Dark')">Dark</button>
     <button onclick="filterDualImages('Metal')">Metal</button>
     <button onclick="filterDualImages('Earth')">Earth</button>
@@ -82,7 +133,7 @@ function filterImages(element) {
             // Filter images based on selected element
             rows.forEach(row => {
                 if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
-                    var imageName = row.c[3].v + '.png'; // Assuming card name is in the third column (column D)
+                    var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
                     var img = document.createElement('img');
                     img.src = 'https://alchemancy.github.io/' + imageName; 
                     var imageItem = document.createElement('div');
@@ -104,7 +155,7 @@ function filterImages(element) {
 
             // Filter images based on selected element for dual-color elements
             rows.forEach(row => {
-                if (row.c[3].v === element) { // Assuming element is in the fourth column (column D)
+                if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
                     var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
                     var img = document.createElement('img');
                     img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
