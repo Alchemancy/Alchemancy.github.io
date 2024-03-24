@@ -51,8 +51,7 @@ function filterImages(element) {
             // Filter images based on selected element
             rows.forEach(row => {
                 if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
-                    var imageName = row.c[9].v; // Assuming image filename is in the ninth column (column J)
-                    var imageName = row.c[9].v.replace(/_/g, ' '); // Replace underscores with spaces
+                    var imageName = row.c[3].v + '.png'; // Assuming card name is in the third column (column D)
                     var img = document.createElement('img');
                     img.src = 'https://alchemancy.github.io/' + imageName; 
                     var imageItem = document.createElement('div');
