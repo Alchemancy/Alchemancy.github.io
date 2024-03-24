@@ -52,8 +52,9 @@ function filterImages(element) {
             rows.forEach(row => {
                 if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
                     var imageName = row.c[9].v; // Assuming image filename is in the ninth column (column J)
+                    var imageName = row.c[9].v.replace(/_/g, ' '); // Replace underscores with spaces
                     var img = document.createElement('img');
-                    img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
+                    img.src = 'https://alchemancy.github.io/' + imageName; 
                     var imageItem = document.createElement('div');
                     imageItem.className = 'image-item';
                     imageItem.appendChild(img);
