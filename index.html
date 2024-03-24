@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Alchemancy</title>
 <style>
-    /* CSS for image grid */
+    /* CSS for body
     body {
         background-color: #403731; /* Set background color */
         color: white; /* Set text color */
@@ -13,6 +13,18 @@
         margin: 0; /* Remove default margin */
         padding: 0; /* Remove default padding */
     }
+    /* CSS for buttons */
+    button {
+        background-color: #636363; /* Button background color */
+        color: white; /* Button text color */
+        border: none;
+        padding: 15px 20px; /* Increase padding for bigger buttons */
+        margin: 5px; /* Add margin between buttons */
+        font-size: 16px; /* Increase font size */
+        cursor: pointer;
+        border-radius: 5px; /* Add border radius */
+    }
+    /* CSS for image grid */
     #image-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -40,6 +52,18 @@
     <button onclick="filterImages('Wood')">Wood</button>
     <button onclick="filterImages('Water')">Water</button>
 </div>
+    <div>
+    <button onclick="filterDualImages('Dark')">Dark</button>
+    <button onclick="filterDualImages('Metal')">Metal</button>
+    <button onclick="filterDualImages('Earth')">Earth</button>
+    <button onclick="filterDualImages('Ice')">Ice</button>
+    <button onclick="filterDualImages('Divine')">Divine</button>
+    <button onclick="filterDualImages('Plant')">Plant</button>
+    <button onclick="filterDualImages('Aether')">Aether</button>
+    <button onclick="filterDualImages('Relic')">Relic</button>
+    <button onclick="filterDualImages('Reflection')">Reflection</button>
+    <button onclick="filterDualImages('Life/Decay')">Life/Decay</button>
+</div>
 <div id="image-grid"></div>
 
 <script>
@@ -61,6 +85,34 @@ function filterImages(element) {
                     var imageName = row.c[3].v + '.png'; // Assuming card name is in the third column (column D)
                     var img = document.createElement('img');
                     img.src = 'https://alchemancy.github.io/' + imageName; 
+                    var imageItem = document.createElement('div');
+                    imageItem.className = 'image-item';
+                    imageItem.appendChild(img);
+                    imageGrid.appendChild(imageItem);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+    
+function filterDualImages(element) {
+    var imageGrid = document.getElementById('image-grid');
+    imageGrid.innerHTML = '';
+
+    // Fetch data from Google Spreadsheet (DualColours)
+    fetch('https://docs.google.com/spreadsheets/d/your-dual-spreadsheet-id/gviz/tq?tqx=out:json')
+        .then(response => response.text())
+        .then(data => {
+            // Parse JSON response
+            var json = JSON.parse(data.substr(47).slice(0, -2));
+            var rows = json.table.rows;
+
+            // Filter images based on selected element
+            rows.forEach(row => {
+                if (row.c[3].v === element) { // Assuming element is in the fourth column (column D)
+                    var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
+                    var img = document.createElement('img');
+                    img.src = 'https://raw.githubusercontent.com/your-username/your-repo-name/' + imageName; // Replace with your GitHub repository URL
                     var imageItem = document.createElement('div');
                     imageItem.className = 'image-item';
                     imageItem.appendChild(img);
