@@ -50,8 +50,8 @@ function filterImages(element) {
 
             // Filter images based on selected element
             rows.forEach(row => {
-                if (row.c[0].v === element) { // Assuming element is in the first column (column A)
-                    var imageName = row.c[2].v; // Assuming image filename is in the third column (column C)
+                if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                    var imageName = row.c[9].v; // Assuming image filename is in the ninth column (column J)
                     var img = document.createElement('img');
                     img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
                     var imageItem = document.createElement('div');
