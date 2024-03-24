@@ -1,53 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery</title>
-    <style>
-        /* CSS for image grid */
-        #image-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            grid-gap: 10px;
-        }
-
-        .image-item {
-            border: 1px solid #ccc;
-            padding: 5px;
-            text-align: center;
-        }
-
-            .image-item img {
-                max-width: 100%;
-                max-height: 150px;
-                display: block;
-                margin: 0 auto;
-            }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Gallery</title>
+<style>
+    /* CSS for image grid */
+    #image-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 10px;
+    }
+    .image-item {
+        border: 1px solid #ccc;
+        padding: 5px;
+        text-align: center;
+    }
+    .image-item img {
+        max-width: 100%;
+        max-height: 150px;
+        display: block;
+        margin: 0 auto;
+    }
+</style>
 </head>
 <body>
-    <h1>Alchemancy</h1> <!-- Header added here -->
-    <div id="image-grid"></div>
+<h1>Alchemancy</h1> <!-- Header added here -->
+<div>
+    <button onclick="filterImages('Fire')">Fire</button>
+    <button onclick="filterImages('Air')">Air</button>
+    <button onclick="filterImages('Electric')">Electric</button>
+    <button onclick="filterImages('Wood')">Wood</button>
+    <button onclick="filterImages('Water')">Water</button>
+</div>
+<div id="image-grid"></div>
 
-    <script>
-        window.onload = function () {
-            var imageGrid = document.getElementById('image-grid');
-            var folderPath = 'https://alchemancy.github.io/'; // Path to your folder containing images
+<script>
+function filterImages(element) {
+    var imageGrid = document.getElementById('image-grid');
+    imageGrid.innerHTML = ''; // Clear existing images
 
-            // Function to display one image for testing
-            function displayTestImage() {
-                var img = document.createElement('img');
-                img.src = folderPath + '/Aphid.png'; // Path to the test image
-                var imageItem = document.createElement('div');
-                imageItem.className = 'image-item';
-                imageItem.appendChild(img);
-                imageGrid.appendChild(imageItem);
-            }
+    // Fetch data from Google Spreadsheet
+    fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json')
+        .then(response => response.text())
+        .then(data => {
+            // Parse JSON response
+            var json = JSON.parse(data.substr(47).slice(0, -2));
+            var rows = json.table.rows;
 
-            // Call function to display test image
-            displayTestImage();
-        };
-    </script>
+            // Filter images based on selected element
+            rows.forEach(row => {
+                if (row.c[0].v === element) { // Assuming element is in the first column (column A)
+                    var imageName = row.c[2].v; // Assuming image filename is in the third column (column C)
+                    var img = document.createElement('img');
+                    img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
+                    var imageItem = document.createElement('div');
+                    imageItem.className = 'image-item';
+                    imageItem.appendChild(img);
+                    imageGrid.appendChild(imageItem);
+                }
+            });
+        })
+        .catch(error => console.error('Error fetching data:', error));
+}
+</script>
 </body>
 </html>
