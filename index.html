@@ -93,26 +93,21 @@ function filterImages(element) {
             });
         })
         .catch(error => console.error('Error fetching data:', error));
-}
     
-function filterDualImages(element) {
-    var imageGrid = document.getElementById('image-grid');
-    imageGrid.innerHTML = '';
-
-    // Fetch data from Google Spreadsheet (DualColours)
-    fetch('https://docs.google.com/spreadsheets/d/your-dual-spreadsheet-id/gviz/tq?tqx=out:json')
+    // Fetch data from Google Spreadsheet for dual-color elements (from a different tab within the same sheet)
+    fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=DualColours') //Access dual colours sheet
         .then(response => response.text())
         .then(data => {
             // Parse JSON response
             var json = JSON.parse(data.substr(47).slice(0, -2));
             var rows = json.table.rows;
 
-            // Filter images based on selected element
+            // Filter images based on selected element for dual-color elements
             rows.forEach(row => {
                 if (row.c[3].v === element) { // Assuming element is in the fourth column (column D)
                     var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
                     var img = document.createElement('img');
-                    img.src = 'https://raw.githubusercontent.com/your-username/your-repo-name/' + imageName; // Replace with your GitHub repository URL
+                    img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
                     var imageItem = document.createElement('div');
                     imageItem.className = 'image-item';
                     imageItem.appendChild(img);
@@ -120,7 +115,7 @@ function filterDualImages(element) {
                 }
             });
         })
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => console.error('Error fetching data for dual-color elements:', error));
 }
 </script>
 </body>
