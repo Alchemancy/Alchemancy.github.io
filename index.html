@@ -36,71 +36,21 @@
             margin-top: 20px;
         }
         /* Button colors */
-        .fire {
-            background-color: #ff0000; /* Fire */
-        }
-
-        .air {
-            background-color: #b4a7d6; /* Air */
-        }
-
-        .electric {
-            background-color: #ffff00; /* Electric */
-        }
-
-        .wood {
-            background-color: #deb887; /* Wood */
-        }
-
-        .water {
-            background-color: #0000ff; /* Water */
-            color: white; 
-        }
-
-        .dark {
-            background-color: #000000; /* Dark */
-            color: white;
-        }
-
-        .metal {
-            background-color: #708090; /* Metal */
-        }
-
-        .earth {
-            background-color: #783f04; /* Earth */
-            color: white;
-        }
-
-        .ice {
-            background-color: #89cff0; /* Ice */
-        }
-
-        .divine {
-            background-color: #ffffff; /* Divine */
-            color: black;
-        }
-
-        .plant {
-            background-color: #00ff00; /* Plant */
-        }
-
-        .aether {
-            background-color: #800080; /* Aether */
-            color: white;
-        }
-
-        .relic {
-            background-color: #d4af37; /* Relic */
-        }
-
-        .reflection {
-            background-color: #007ba7; /* Reflection */
-        }
-
-        .life-decay {
-            background-color: #0a3603; /* Life/Decay */
-            color: white;
-        }
+        .fire { background-color: #ff0000; /* Fire */ }
+        .air { background-color: #b4a7d6; /* Air */ }
+        .electric { background-color: #ffff00; /* Electric */ }
+        .wood { background-color: #deb887; /* Wood */ }
+        .water { background-color: #0000ff; color: white; /* Water */ }
+        .dark { background-color: #000000; color: white; /* Dark */ }
+        .metal { background-color: #708090; /* Metal */ }
+        .earth { background-color: #783f04; color: white; /* Earth */ }
+        .ice { background-color: #89cff0; /* Ice */ }
+        .divine { background-color: #ffffff; color: black; /* Divine */ }
+        .plant { background-color: #00ff00; /* Plant */ }
+        .aether { background-color: #800080; color: white; /* Aether */ }
+        .relic { background-color: #d4af37; /* Relic */ }
+        .reflection { background-color: #007ba7; /* Reflection */ }
+        .life-decay { background-color: #0a3603; color: white; /* Life/Decay */ }
         /* CSS for image grid */
         #image-grid {
             display: grid;
@@ -191,9 +141,9 @@
                     var json = JSON.parse(data.substr(47).slice(0, -2));
                     var rows = json.table.rows;
 
-                    rows.sort((a, b) => {
-                        var nameA = a.c[3].v;
-                        var nameB = b.c[3].v;
+                    rows.sort((a, b) => { //sort by mana cost
+                        var nameA = a.c[0].v;
+                        var nameB = b.c[0].v;
                         return nameA.localeCompare(nameB);
                     });
 
@@ -219,6 +169,12 @@
                     // Parse JSON response
                     var json = JSON.parse(data.substr(47).slice(0, -2));
                     var rows = json.table.rows;
+
+                    rows.sort((a, b) => { //sort by mana cost
+                        var nameA = a.c[0].v;
+                        var nameB = b.c[0].v;
+                        return nameA.localeCompare(nameB);
+                    });
 
                     // Filter images based on selected element for dual-color elements
                     rows.forEach(row => {
