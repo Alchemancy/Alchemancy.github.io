@@ -191,6 +191,12 @@
                     var json = JSON.parse(data.substr(47).slice(0, -2));
                     var rows = json.table.rows;
 
+                    rows.sort((a, b) => {
+                        var nameA = a.c[3].v;
+                        var nameB = b.c[3].v;
+                        return nameA.localeCompare(nameB);
+                    });
+
                     // Filter images based on selected element
                     rows.forEach(row => {
                         if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
