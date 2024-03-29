@@ -9,6 +9,7 @@
         h1 {
             font-family: 'Bree Serif', serif;
             font-weight: bold;
+            font-size: 40px;
             color: white; 
         }
         /* CSS for body*/
@@ -147,9 +148,9 @@
                     var json = JSON.parse(data.substr(47).slice(0, -2));
                     var rows = json.table.rows;
 
-                    rows.sort((a, b) => { //sort by mana cost
-                        var manaA = (a.c[0].v);
-                        var manaB = (b.c[0].v);
+                    rows.slice(1).sort((a, b) => { //sort by mana cost, but skip row 1
+                        var manaA = a.c[0].v;
+                        var manaB = b.c[0].v;
                         return manaA - manaB;
                     });
 
