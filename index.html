@@ -147,9 +147,9 @@
                     var rows = json.table.rows;
 
                     rows.sort((a, b) => { //sort by mana cost
-                        var nameA = a.c[0].v;
-                        var nameB = b.c[0].v;
-                        return nameA.localeCompare(nameB);
+                        var manaA = parseFloat(a.c[0].v);
+                        var manaB = parseFloat(b.c[0].v);
+                        return manaA.localeCompare(manaB);
                     });
 
                     // Filter images based on selected element
