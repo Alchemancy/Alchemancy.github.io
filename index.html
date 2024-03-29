@@ -149,7 +149,7 @@
                     var rows = json.table.rows;
 
                     //sort by mana cost, but skip row 1
-                    rows..sort((a, b) => { 
+                    rows.sort((a, b) => { 
                         var manaA = (a.c[0].v) || 0; //default to 0 if null
                         var manaB = (b.c[0].v) || 0; //default to 0 if null
                         return manaA - manaB;
