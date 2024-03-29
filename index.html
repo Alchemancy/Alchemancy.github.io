@@ -1,179 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Alchemancy</title>
-<style>
-    /* CSS for body*/
-    body {
-        background-color: #403731; /* Set background color */
-        color: white; /* Set text color */
-        font-family: Arial, sans-serif; /* Set font family */
-        margin: 0; /* Remove default margin */
-        padding: 0; /* Remove default padding */
-    }
-    /* CSS for buttons */
-    button {
-        background-color: #6d5d4d; /* Default button color */
-        color: white;
-        border: none;
-        padding: 15px 30px;
-        margin: 5px;
-        cursor: pointer;
-        border-radius: 8px;
-        font-size: 16px;
-    }
-    /* Center the buttons */
-    .button-container {
-        text-align: center;
-        margin-top: 20px;
-    }
-    /* Button colors */
-    .fire {
-        background-color: #ff0000; /* Fire */
-    }
-    .air {
-        background-color: #b4a7d6; /* Air */
-    }
-    .electric {
-        background-color: #ffff00; /* Electric */
-    }
-    .wood {
-        background-color: #deb887; /* Wood */
-    }
-    .water {
-        background-color: #0000ff; /* Water */
-        color: white; /* Text color for Water button */
-    }
-    .dark {
-        background-color: #000000; /* Dark */
-        color: white;
-    }
-    .metal {
-        background-color: #708090; /* Metal */
-    }
-    .earth {
-        background-color: #783f04; /* Earth */
-        color: white;
-    }
-    .ice {
-        background-color: #89cff0; /* Ice */
-    }
-    .divine {
-        background-color: #ffffff; /* Divine */
-    }
-    .plant {
-        background-color: #00ff00; /* Plant */
-    }
-    .aether {
-        background-color: #800080; /* Aether */
-    }
-    .relic {
-        background-color: #d4af37; /* Relic */
-    }
-    .reflection {
-        background-color: #007ba7; /* Reflection */
-    }
-    .life-decay {
-        background-color: #0a3603; /* Life/Decay */
-        color: white;
-    }
-    /* CSS for image grid */
-    #image-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        grid-gap: 20px;
-    }
-    .image-item {
-        /* Remove border */
-        padding: 10px;
-        text-align: center;
-    }
-    .image-item img {
-        max-width: 100%;
-        max-height: 300px;
-        display: block;
-        margin: 0 auto;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemancy</title>
+    <style>
+        /* CSS for body*/
+        body {
+            background-color: #403731; /* Set background color */
+            color: white; /* Set text color */
+            font-family: Arial, sans-serif; /* Set font family */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        /* CSS for buttons */
+        button {
+            background-color: #6d5d4d; /* Default button color */
+            color: black; /* default button text colour */
+            border: none;
+            padding: 15px 30px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        /* Center the buttons */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Button colors */
+        .fire {
+            background-color: #ff0000; /* Fire */
+        }
+
+        .air {
+            background-color: #b4a7d6; /* Air */
+        }
+
+        .electric {
+            background-color: #ffff00; /* Electric */
+        }
+
+        .wood {
+            background-color: #deb887; /* Wood */
+        }
+
+        .water {
+            background-color: #0000ff; /* Water */
+            color: white; 
+        }
+
+        .dark {
+            background-color: #000000; /* Dark */
+            color: white;
+        }
+
+        .metal {
+            background-color: #708090; /* Metal */
+        }
+
+        .earth {
+            background-color: #783f04; /* Earth */
+            color: white;
+        }
+
+        .ice {
+            background-color: #89cff0; /* Ice */
+        }
+
+        .divine {
+            background-color: #ffffff; /* Divine */
+            color: black;
+        }
+
+        .plant {
+            background-color: #00ff00; /* Plant */
+        }
+
+        .aether {
+            background-color: #800080; /* Aether */
+            color: white;
+        }
+
+        .relic {
+            background-color: #d4af37; /* Relic */
+        }
+
+        .reflection {
+            background-color: #007ba7; /* Reflection */
+        }
+
+        .life-decay {
+            background-color: #0a3603; /* Life/Decay */
+            color: white;
+        }
+        /* CSS for image grid */
+        #image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .image-item {
+            /* Remove border */
+            padding: 10px;
+            text-align: center;
+        }
+
+            .image-item img {
+                max-width: 100%;
+                max-height: 300px;
+                display: block;
+                margin: 0 auto;
+            }
+    </style>
 </head>
 <body>
-<h1 style="text-align: center;">Alchemancy</h1>
-<div class="button-container">
-    <!-- Buttons for single-color elements -->
-    <button class="fire" onclick="filterImages('Fire')">Fire</button>
-    <button class="air" onclick="filterImages('Air')">Air</button>
-    <button class="electric" onclick="filterImages('Electric')">Electric</button>
-    <button class="wood" onclick="filterImages('Wood')">Wood</button>
-    <button class="water" onclick="filterImages('Water')">Water</button>
-</div>
-<div class="button-container">
-    <!-- Buttons for dual-color elements -->
-    <button class="dark" onclick="filterImages('Dark')">Dark</button>
-    <button class="metal" onclick="filterImages('Metal')">Metal</button>
-    <button class="earth" onclick="filterImages('Earth')">Earth</button>
-    <button class="ice" onclick="filterImages('Ice')">Ice</button>
-    <button class="divine" onclick="filterImages('Divine')">Divine</button>
-    <button class="plant" onclick="filterImages('Plant')">Plant</button>
-    <button class="aether" onclick="filterImages('Aether')">Aether</button>
-    <button class="relic" onclick="filterImages('Relic')">Relic</button>
-    <button class="reflection" onclick="filterImages('Reflection')">Reflection</button>
-    <button class="life-decay" onclick="filterImages('Life/Decay')">Life/Decay</button>
-</div>
-<div id="image-grid"></div>
+    <h1 style="text-align: center;">Alchemancy</h1>
+    <div class="button-container">
+        <!-- Buttons for single-color elements -->
+        <button class="fire" onclick="filterImages('Fire')">Fire</button>
+        <button class="air" onclick="filterImages('Air')">Air</button>
+        <button class="electric" onclick="filterImages('Electric')">Electric</button>
+        <button class="wood" onclick="filterImages('Wood')">Wood</button>
+        <button class="water" onclick="filterImages('Water')">Water</button>
+    </div>
+    <div class="button-container">
+        <!-- Buttons for dual-color elements -->
+        <button class="dark" onclick="filterImages('Dark')">Dark</button>
+        <button class="metal" onclick="filterImages('Metal')">Metal</button>
+        <button class="earth" onclick="filterImages('Earth')">Earth</button>
+        <button class="ice" onclick="filterImages('Ice')">Ice</button>
+        <button class="divine" onclick="filterImages('Divine')">Divine</button>
+        <button class="plant" onclick="filterImages('Plant')">Plant</button>
+        <button class="aether" onclick="filterImages('Aether')">Aether</button>
+        <button class="relic" onclick="filterImages('Relic')">Relic</button>
+        <button class="reflection" onclick="filterImages('Reflection')">Reflection</button>
+        <button class="life-decay" onclick="filterImages('Life/Decay')">Life/Decay</button>
+    </div>
+    <div id="image-grid"></div>
 
-<script>
-function filterImages(element) {
-    var imageGrid = document.getElementById('image-grid');
-    imageGrid.innerHTML = ''; // Clear existing images
+    <script>
+        function filterImages(element) {
+            var imageGrid = document.getElementById('image-grid');
+            imageGrid.innerHTML = ''; // Clear existing images
 
-    // Fetch data from Google Spreadsheet
-    fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json')
-        .then(response => response.text())
-        .then(data => {
-            // Parse JSON response
-            var json = JSON.parse(data.substr(47).slice(0, -2));
-            var rows = json.table.rows;
+            // Fetch data from Google Spreadsheet Alchemancers tab
+            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=Alchemancers')
+                .then(response => response.text())
+                .then(data => {
+                    // Parse JSON response
+                    var json = JSON.parse(data.substr(47).slice(0, -2));
+                    var rows = json.table.rows;
 
-            // Filter images based on selected element
-            rows.forEach(row => {
-                if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
-                    var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
-                    var img = document.createElement('img');
-                    img.src = 'https://alchemancy.github.io/' + imageName; 
-                    var imageItem = document.createElement('div');
-                    imageItem.className = 'image-item';
-                    imageItem.appendChild(img);
-                    imageGrid.appendChild(imageItem);
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching data:', error));
-    
-    // Fetch data from Google Spreadsheet for dual-color elements (from a different tab within the same sheet)
-    fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=DualColours') //Access dual colours sheet
-        .then(response => response.text())
-        .then(data => {
-            // Parse JSON response
-            var json = JSON.parse(data.substr(47).slice(0, -2));
-            var rows = json.table.rows;
+                    // Filter images based on selected element
+                    rows.forEach(row => {
+                        if (row.c[1].v === element) { // Assuming element is in the second column (column B)
+                            var imageName = row.c[0].v + '.png'; // Append '.png' to the image name
+                            var img = document.createElement('img');
+                            img.src = 'https://alchemancy.github.io/' + imageName;
+                            var imageItem = document.createElement('div');
+                            imageItem.className = 'image-item';
+                            imageItem.appendChild(img);
+                            imageGrid.appendChild(imageItem);
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
 
-            // Filter images based on selected element for dual-color elements
-            rows.forEach(row => {
-                if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
-                    var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
-                    var img = document.createElement('img');
-                    img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
-                    var imageItem = document.createElement('div');
-                    imageItem.className = 'image-item';
-                    imageItem.appendChild(img);
-                    imageGrid.appendChild(imageItem);
-                }
-            });
-        })
-        .catch(error => console.error('Error fetching data for dual-color elements:', error));
-}
-</script>
+            // Fetch data from Google Spreadsheet mono colour cards tab
+            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json')
+                .then(response => response.text())
+                .then(data => {
+                    // Parse JSON response
+                    var json = JSON.parse(data.substr(47).slice(0, -2));
+                    var rows = json.table.rows;
+
+                    // Filter images based on selected element
+                    rows.forEach(row => {
+                        if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                            var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
+                            var img = document.createElement('img');
+                            img.src = 'https://alchemancy.github.io/' + imageName;
+                            var imageItem = document.createElement('div');
+                            imageItem.className = 'image-item';
+                            imageItem.appendChild(img);
+                            imageGrid.appendChild(imageItem);
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+
+            // Fetch data from Google Spreadsheet for dual-color elements
+            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=DualColours') //Access dual colours sheet
+                .then(response => response.text())
+                .then(data => {
+                    // Parse JSON response
+                    var json = JSON.parse(data.substr(47).slice(0, -2));
+                    var rows = json.table.rows;
+
+                    // Filter images based on selected element for dual-color elements
+                    rows.forEach(row => {
+                        if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                            var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
+                            var img = document.createElement('img');
+                            img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
+                            var imageItem = document.createElement('div');
+                            imageItem.className = 'image-item';
+                            imageItem.appendChild(img);
+                            imageGrid.appendChild(imageItem);
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching data for dual-color elements:', error));
+        }
+    </script>
 </body>
 </html>
