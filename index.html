@@ -166,7 +166,7 @@
                     rows.forEach(row => {
                         if (row.c[1].v === element) { // Assuming element is in the second column (column B)
                             var imageName; 
-                            if (name === "Mother Margaret,<br>Masterful Mentor") { // Special case
+                            if (row.c[0].v === "Mother Margaret,<br>Masterful Mentor") { // Special case
                                 imageName = "Mother Margaret, Masterful Mentor.png"; 
                             } else {
                                 imageName = row.c[0].v + '.png'; // Append '.png' to the name
