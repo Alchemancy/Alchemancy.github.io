@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Alchemancy - Cards</title>
+        <!-- Icon-->
+        <link rel="icon" type="image/x-icon" href="assets/Alchemancy circlecrop.png" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+		<style>
+			/* CSS for horizaontal line */
+        hr {
+            border: none;
+            border-top: 2px solid white; /* Line color and thickness */
+            margin: 20px 0; /* Spacing above and below the line */
+        }
+        /* CSS for buttons */
+        button {
+            background-color: #6d5d4d; /* Default button color */
+            color: black; /* default button text colour */
+            border: none;
+            padding: 15px 30px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        /* Center the buttons */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        /* Button colors */
+        .fire { background-color: #ff0000; /* Fire */ }
+        .air { background-color: #b4a7d6; /* Air */ }
+        .electric { background-color: #ffff00; /* Electric */ }
+        .wood { background-color: #deb887; /* Wood */ }
+        .water { background-color: #0000ff; color: white; /* Water */ }
+        .dark { background-color: #000000; color: white; /* Dark */ }
+        .metal { background-color: #708090; /* Metal */ }
+        .earth { background-color: #783f04; color: white; /* Earth */ }
+        .ice { background-color: #89cff0; /* Ice */ }
+        .divine { background-color: #ffffff; color: black; /* Divine */ }
+        .plant { background-color: #00ff00; /* Plant */ }
+        .aether { background-color: #800080; color: white; /* Aether */ }
+        .relic { background-color: #d4af37; /* Relic */ }
+        .reflection { background-color: #007ba7; /* Reflection */ }
+        .life-decay { background-color: #0a3603; color: white; /* Life/Decay */ }
+        /* CSS for image grid */
+        #image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-gap: 20px;
+        }
+
+        .image-item {
+            /* Remove border */
+            padding: 10px;
+            text-align: center;
+        }
+
+            .image-item img {
+                max-width: 100%;
+                max-height: 300px;
+                display: block;
+                margin: 0 auto;
+            }
+		</style>
+    </head>
+    <body class="d-flex flex-column">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-black">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html">Alchemancy</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" href="index.html#play">Play</a></li>
+                            <li class="nav-item"><a class="nav-link" href="https://docs.google.com/document/d/1zCeITkdhU3VMQvz8o4ZYhFuzwWl7R3phlQ-KgenrSVE/edit?usp=sharing">Rules</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cards.html">Cards</a></li>
+                            <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownSocialMedia" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Social Media</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownSocialMedia">
+                                    <li><a class="dropdown-item" href="https://discord.com/invite/HWGFe7tPyZ">Discord</a></li>
+                                    <li><a class="dropdown-item" href="https://youtube.com/@PlayAlchemancy">YouTube</a></li>
+                                    <li><a class="dropdown-item" href="https://www.instagram.com/playalchemancy">Instagram</a></li>
+                                    <li><a class="dropdown-item" href="https://twitter.com/PlayAlchemancy">Twitter</a></li>
+                                    <li><a class="dropdown-item" href="https://www.reddit.com/r/Alchemancy">Reddit</a></li>
+                                    <li><a class="dropdown-item" href="https://www.facebook.com/PlayAlchemancy">Facebook</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Section one-->
+            <section class="py-5" style="background-color: #403731;" id="scroll-target">
+                <div class="button-container">
+        <!-- Buttons for single-color elements -->
+        <button class="fire" onclick="filterImages('Fire')">Fire</button>
+        <button class="air" onclick="filterImages('Air')">Air</button>
+        <button class="electric" onclick="filterImages('Electric')">Electric</button>
+        <button class="wood" onclick="filterImages('Wood')">Wood</button>
+        <button class="water" onclick="filterImages('Water')">Water</button>
+    </div>
+    <div class="button-container">
+        <!-- Buttons for dual-color elements -->
+        <button class="dark" onclick="filterImages('Dark')">Dark</button>
+        <button class="metal" onclick="filterImages('Metal')">Metal</button>
+        <button class="earth" onclick="filterImages('Earth')">Earth</button>
+        <button class="ice" onclick="filterImages('Ice')">Ice</button>
+        <button class="divine" onclick="filterImages('Divine')">Divine</button>
+        <button class="plant" onclick="filterImages('Plant')">Plant</button>
+        <button class="aether" onclick="filterImages('Aether')">Aether</button>
+        <button class="relic" onclick="filterImages('Relic')">Relic</button>
+        <button class="reflection" onclick="filterImages('Reflection')">Reflection</button>
+        <button class="life-decay" onclick="filterImages('Life/Decay')">Life/Decay</button>
+    </div>
+    <hr> <!-- draw a horizontal line -->
+    <div id="image-grid"></div>
+            </section>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-black py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Alchemancy 2023</div></div>
+					<!--
+                    <div class="col-auto">
+                        <a class="link-light small" href="#!">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" href="#!">Contact</a>
+                    </div>
+					-->
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
