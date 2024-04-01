@@ -1,4 +1,4 @@
-# Alchemancy
+# Alchemancy FAQ
 ### What are your future plans for Alchemancy?
 A dedicated digital client is planned though I don't have a release date yet. My focus is on building a competitive multiplayer experience with matchmaking and periodic tournaments. Realistically this will be all that I can afford but I do have dreams of making a single player story mode, unique draft mode, and gamemodes for 3-4 players.
 
@@ -12,6 +12,8 @@ Cards will be earned over time in the free to play model but you will also be ab
 
 ### How can I support the game?
 I'm not taking any donations at this time. Keep a look out for a Kickstarter once I have something more concrete to show of a digital client. But until then I will take any words of encouragement or feedback you have! The main place you can contact me is @Moonfassa on [Discord](https://discord.com/invite/HWGFe7tPyZ).  
+
+___
 
 # Tabletop Simulator
 ### Where can I find people to play with?
