@@ -120,3 +120,18 @@ function filterImages(element) {
                 .catch(error => console.error('Error fetching data for dual-color elements:', error));
         }
 		
+function displayMarkdownFile(filePath) {
+    fetch(filePath)
+        .then(response => response.text())
+        .then(markdown => {
+            // Convert Markdown to HTML
+            var converter = new showdown.Converter();
+            var html = converter.makeHtml(markdown);
+
+            // Display HTML content in the specified container
+            document.getElementById('markdown-content').innerHTML = html;
+        })
+        .catch(error => console.error('Error fetching Markdown file:', error));
+}
+// Call the function to display the Markdown file
+displayMarkdownFile('Markdown Files/faq.md');
