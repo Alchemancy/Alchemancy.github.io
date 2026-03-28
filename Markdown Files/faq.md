@@ -4,7 +4,7 @@
 A dedicated digital client is planned though I don't have a release date yet. My focus is on building a competitive multiplayer experience with matchmaking and periodic tournaments. Realistically this will be all that I can afford but I do have dreams of making a single player story mode, unique draft mode, and gamemodes for 3-4 players.
 
 ### Do you use AI in your art and why do you hate artists?
-All card art is currently AI generated as that is what I can afford right now. It's that or I draw them myself but nobody wants that, trust me. While I respect the immense struggles artists are going through right now with AI art, this game wouldn't exist without it. I plan to gradually upgrade my art with real artists' work as the game brings in some cash. 
+All prototype card art is currently AI generated. Until this becomes a project I actually pull the trigger on and turn into a real game, the art will remain AI. This helps distinguish cards in playtesting but the full release will not use AI art in any form. 
 
 ### What will monetization look like?
 This game will be free to play first. Anything requiring money from players will come with art made from real artists. I don't mind if this game never makes a profit but I do want it to be sustainable enough that I can release new card sets without having to sell my second child (first one is already spoken for). 
