@@ -60,7 +60,7 @@ function filterImages(element) {
                 .catch(error => console.error('Error fetching data for Alchemancers:', error));
 
             // Fetch data from Google Spreadsheet mono colour cards tab
-            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json')
+            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=MonoColours')
                 .then(response => response.text())
                 .then(data => {
                     // Parse JSON response
