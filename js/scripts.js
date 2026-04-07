@@ -40,7 +40,7 @@ function filterImages(element) {
 
                     // Filter images based on selected element
                     rows.forEach(row => {
-                        if (row.c[1].v === element) { // Assuming element is in the second column (column B)
+                        if (row.c[1] && row.c[1].v === element) { // Assuming element is in the second column (column B)
                             var imageName; 
                             if (row.c[0].v === "Mother Margaret,<br>Masterful Mentor") { // Special case
                                 imageName = "Mother Margaret, Masterful Mentor.png"; 
@@ -69,14 +69,14 @@ function filterImages(element) {
 
                     //sort by mana cost, but skip row 1
                     rows.sort((a, b) => { 
-                        var manaA = (a.c[0].v) || 0; //default to 0 if null
-                        var manaB = (b.c[0].v) || 0; //default to 0 if null
+                        var manaA = (a.c[0] && a.c[0].v) || 0; //default to 0 if null
+                        var manaB = (b.c[0] && b.c[0].v) || 0; //default to 0 if null
                         return manaA - manaB;
                     });
 
                     // Filter images based on selected element
                     rows.forEach(row => {
-                        if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                        if (row.c[7] && row.c[7].v === element) { // Assuming element is in the eighth column (column H)
                             var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
                             var img = document.createElement('img');
                             img.src = 'https://alchemancy.github.io/' + imageName;
@@ -99,14 +99,14 @@ function filterImages(element) {
 
                     //sort by mana cost, but skip row 1
                     rows.sort((a, b) => { 
-                        var manaA = (a.c[0].v) || 0; //default to 0 if null
-                        var manaB = (b.c[0].v) || 0; //default to 0 if null
+                        var manaA = (a.c[0] && a.c[0].v) || 0; //default to 0 if null
+                        var manaB = (b.c[0] && b.c[0].v) || 0; //default to 0 if null
                         return manaA - manaB;
                     });
 
                     // Filter images based on selected element for dual-color elements
                     rows.forEach(row => {
-                        if (row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                        if (row.c[7] && row.c[7].v === element) { // Assuming element is in the eighth column (column H)
                             var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
                             var img = document.createElement('img');
                             img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
