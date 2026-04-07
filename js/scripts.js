@@ -90,41 +90,35 @@ function filterImages(element) {
                 .catch(error => console.error('Error fetching data for mono-colour elements:', error));
 
             // Fetch data from Google Spreadsheet for dual-color elements
-            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=DualColours')
-    .then(response => response.text())
-    .then(data => {
-        var json = JSON.parse(data.substr(47).slice(0, -2));
-        var rows = json.table.rows;
+            fetch('https://docs.google.com/spreadsheets/d/1ZOAFcAZk7molsyaZJxQA1GmwTANVo8I9iFEiMU5aijE/gviz/tq?tqx=out:json&sheet=DualColours') //Access dual colours sheet
+                .then(response => response.text())
+                .then(data => {
+                    // Parse JSON response
+                    var json = JSON.parse(data.substr(47).slice(0, -2));
+                    var rows = json.table.rows;
 
-        rows.sort((a, b) => { 
-            var manaA = (a.c[0] && a.c[0].v) || 0;
-            var manaB = (b.c[0] && b.c[0].v) || 0;
-            return manaA - manaB;
-        });
+                    //sort by mana cost, but skip row 1
+                    rows.sort((a, b) => { 
+                        var manaA = (a.c[0] && a.c[0].v) || 0; //default to 0 if null
+                        var manaB = (b.c[0] && b.c[0].v) || 0; //default to 0 if null
+                        return manaA - manaB;
+                    });
 
-        rows.forEach(row => {
-            // ✅ FULL safety checks
-            if (
-                row.c[7] && 
-                row.c[7].v === element &&
-                row.c[3] && 
-                row.c[3].v
-            ) {
-                var imageName = row.c[3].v + '.png';
-
-                console.log("Adding image:", imageName); // 👈 debug
-
-                var img = document.createElement('img');
-                img.src = 'https://alchemancy.github.io/' + imageName;
-
-                var imageItem = document.createElement('div');
-                imageItem.className = 'image-item';
-                imageItem.appendChild(img);
-                imageGrid.appendChild(imageItem);
-            }
-        });
-    })
-    .catch(error => console.error('DualColours error:', error));
+                    // Filter images based on selected element for dual-color elements
+                    rows.forEach(row => {
+                        if (row.c[7] && row.c[7].v === element) { // Assuming element is in the eighth column (column H)
+                            var imageName = row.c[3].v + '.png'; // Append '.png' to the image name
+                            var img = document.createElement('img');
+                            img.src = 'https://alchemancy.github.io/' + imageName; // Replace with your GitHub repository URL
+                            var imageItem = document.createElement('div');
+                            imageItem.className = 'image-item';
+                            imageItem.appendChild(img);
+                            imageGrid.appendChild(imageItem);
+                        }
+                    });
+                })
+                .catch(error => console.error('Error fetching data for dual-color elements:', error));
+        }
 		
 function displayMarkdownFile(filePath) {
     fetch(filePath)
